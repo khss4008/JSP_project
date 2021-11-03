@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="dto.Product"/>
+<fullyQualifiedTypeName name="dao.ProductRepository"/>
+<fullyQualifiedTypeName name="jdk.nashorn.internal.ir.ForNode"/>
+<fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.mysql.cj.xdevapi.PreparableStatement"/>
+<fullyQualifiedTypeName name="javax.sql.ConnectionPoolDataSource"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.jdbc.pool.jmx.ConnectionPool"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.jdbc.pool.ConnectionPool"/>
+<fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Result"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="javax.naming.NamingException"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="util.ConnectionPool"/>
+</qualifiedTypeNameHistroy>
