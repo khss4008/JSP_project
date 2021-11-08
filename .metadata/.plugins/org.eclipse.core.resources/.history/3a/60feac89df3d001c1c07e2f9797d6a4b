@@ -1,0 +1,40 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import javax.naming.NamingException;
+
+import util.ConnectionPool;
+
+public class BoardDAO {
+	
+	public int insert(String bid, String btitle, String bcontent, String bmember, String bdate
+			) throws NamingException, SQLException{
+			
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			
+			
+			try {
+				String sql = "INSERT INTO product (bid, btitle, bcontent, bmember, bdate)"
+						+" VALUES (?,?,?,?,?)";
+				conn = ConnectionPool.get();
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(1, bid);
+				stmt.setString(2, btitle);
+				stmt.setString(3, bcontent);
+				stmt.setString(4, bmember);
+				stmt.setString(5, bdate);
+				int count = stmt.executeUpdate(); //return이 1이면 데이터 나온거 2이면 아무것도 안된거
+				
+				return (count == 1) ? 1 : 2;
+				
+			} finally {
+				if(conn != null) conn.close();
+				if(stmt != null) stmt.close();
+			}
+			
+		}
+}

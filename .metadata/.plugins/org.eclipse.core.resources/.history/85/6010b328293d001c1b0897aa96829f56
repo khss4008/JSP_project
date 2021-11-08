@@ -1,0 +1,38 @@
+<%@page import="dao.MemberDAO"%>
+<%@page import="util.ConnectionPool"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	
+	String id = request.getParameter("id");
+	String pass = request.getParameter("password");
+	String name = request.getParameter("name");
+	String gender = request.getParameter("gender");
+	
+	String year = request.getParameter("birthyy");
+	String month = request.getParameter("birthmm");
+	String day = request.getParameter("birthdd");
+	String birth = year + "/" + month + "/" + day;
+	
+	String email = request.getParameter("email");
+	String phone = request.getParameter("phone");
+	String address = request.getParameter("address");
+	
+	MemberDAO dao = new MemberDAO();
+	int code = dao.join(id, pass, name, gender, birth, email, phone, address);
+	
+	if (code == 1){
+		response.sendRedirect("joinMember.jsp");
+	} else if (code == 2){
+		response.sendRedirect("loginMember.jsp");	
+	} else {
+		response.sendRedirect("/product/products.jsp");
+	}
+
+
+%>

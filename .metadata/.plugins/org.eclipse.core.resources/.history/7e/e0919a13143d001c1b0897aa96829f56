@@ -1,0 +1,46 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.naming.NamingException;
+
+public class ProductDAO {
+	
+	public ArrayList<ProductObj> getList() throws NamingException, SQLException{
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT * FROM product";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			
+			ArrayList<ProductObj> products = new ArrayList<ProductObj>();
+			
+			while(rs.next()) {
+				products.add(new ProductObj(rs.getString("pid"),rs.getString("pname"),rs.getString("pdescription")
+						,rs.getString("pprice"),rs.getString("pfilename")));
+			} return products;
+		} finally {
+			if(rs != null) rs.close();
+			if(stmt != null) stmt.close();
+			if(conn != null) conn.close();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

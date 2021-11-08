@@ -1,0 +1,27 @@
+package dao;
+
+public class BoardObj {
+	//btitle, bdescription, bfname
+	String btitle;
+	String bdescription;
+	String bfname;
+	
+	public BoardObj(String btitle, String bdescription, String bfname) {
+		super();
+		this.btitle = btitle;
+		this.bdescription = bdescription;
+		this.bfname = bfname;
+	}
+	
+	public String getBtitle() {
+		return btitle;
+	}
+	public String getBdescription() {
+		return bdescription;
+	}
+	public String getBfname() {
+		return bfname;
+	}
+	
+	
+}

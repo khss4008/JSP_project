@@ -1,0 +1,9 @@
+package dao;
+
+public class BoardObj {
+	//bid, bdescription, bfname
+	String btitle;
+	String bdescription;
+	String bfname;
+	
+}
