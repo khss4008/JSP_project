@@ -84,8 +84,8 @@ public class BoardDAO {
 			String id = rs.getString(1);
 			String title = rs.getString(2);
 			String content = rs.getString(3);
-			String filename = rs.getString(4);
-			String date = rs.getString(5);
+			String filename = rs.getString(5);
+			String date = rs.getString(6);
 			
 			BoardObj board = new BoardObj(id, title, content, filename, date);
 			

@@ -32,7 +32,7 @@
 					<h3><%=product.getPname() %></h3>
 					<p><%=product.getPdescription() %>
 					<p><%=product.getPprice() %>원
-					<p><a href = "detailProduct.jsp?id=<%=product.getPid() %>" class = "btn btn-secondary" role = "button">상세정보</a>
+					<p><a href = "detailProduct.jsp?id=<%=product.getPid()%> class = "btn btn-secondary" role = "button">상세정보</a>
 				</div>
 				<% } %>
 			</div>

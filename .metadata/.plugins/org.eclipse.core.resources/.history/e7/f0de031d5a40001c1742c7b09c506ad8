@@ -16,7 +16,7 @@
       </div>
    </div>
 <%
-	String a = request.getParameter("id");
+	String a = "2";
 	BoardObj board = (new BoardDAO()).getDetail(a);
 
 

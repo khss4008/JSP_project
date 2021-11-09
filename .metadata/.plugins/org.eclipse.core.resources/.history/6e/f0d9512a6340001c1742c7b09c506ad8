@@ -11,27 +11,27 @@ import javax.naming.NamingException;
 
 import util.ConnectionPool;
 
-public class BoardDAO {
+public class ProductDAO {
 	
-	public ArrayList<BoardObj> getList() throws NamingException, SQLException{
+	public ArrayList<ProductObj> getList() throws NamingException, SQLException{
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "SELECT * FROM board";
+			String sql = "SELECT pid, pname, pdescription, pprice, pfilename "
+					+ "FROM product";
 			conn = ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
-			ArrayList<BoardObj> boards = new ArrayList<BoardObj>();
+			ArrayList<ProductObj> products = new ArrayList<ProductObj>();
 			
 			while(rs.next()) {
-				boards.add(new BoardObj(rs.getString("bid"),rs.getString("btitle"),rs.getString("bcontent"),
-						rs.getString("bmember"), rs.getString("bdate")));
-			} return boards;
-			
+				products.add(new ProductObj(rs.getString("pid"),rs.getString("pname"),rs.getString("pdescription")
+						,rs.getString("pprice"),rs.getString("pfilename")));
+			} return products;
 		} finally {
 			if(rs != null) rs.close();
 			if(stmt != null) stmt.close();
@@ -40,7 +40,7 @@ public class BoardDAO {
 	}
 	
 	
-	public int insert(String btitle, String bcontent, String bmember
+	public int insert(String pid, String pname, String pdescription, String pprice, String pfname
 			) throws NamingException, SQLException{
 			
 			Connection conn = null;
@@ -48,14 +48,15 @@ public class BoardDAO {
 			
 			
 			try {
-				String sql = "INSERT INTO board (btitle, bcontent, bmember, bdate)"
-						+" VALUES (?,?,?,?)";
+				String sql = "INSERT INTO product (pid, pname, pdescription, pprice, pfilename)"
+						+" VALUES (?,?,?,?,?)";
 				conn = ConnectionPool.get();
 				stmt = conn.prepareStatement(sql);
-				stmt.setString(1, btitle);
-				stmt.setString(2, bcontent);
-				stmt.setString(3, bmember);
-				stmt.setString(4, LocalDate.now().toString());
+				stmt.setString(1, pid);
+				stmt.setString(2, pname);
+				stmt.setString(3, pdescription);
+				stmt.setString(4, pprice);
+				stmt.setString(5, pfname);
 				int count = stmt.executeUpdate(); //return이 1이면 데이터 나온거 2이면 아무것도 안된거
 				
 				return (count == 1) ? 1 : 2;
@@ -67,29 +68,30 @@ public class BoardDAO {
 			
 		}
 	
-	public BoardObj getDetail(String bid) throws NamingException, SQLException {
+	
+	public ProductObj getDetail(String sid) throws NamingException, SQLException {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "SELECT * FROM board WHERE bid = ?";
+			String sql = "SELECT * FROM product WHERE pid = ?";
 			conn = ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
-				stmt.setString(1, bid);
+				stmt.setString(1, sid);
 			rs = stmt.executeQuery();
 			
 			rs.next();
 			
-			String id = rs.getString(1);
-			String title = rs.getString(2);
-			String content = rs.getString(3);
-			String filename = rs.getString(4);
-			String date = rs.getString(5);
+			String pid = rs.getString(1);
+			String pname = rs.getString(2);
+			String pdescription = rs.getString(3);
+			String pprice = rs.getString(4);
+			String pfilename = rs.getString(5);
 			
-			BoardObj board = new BoardObj(id, title, content, filename, date);
+			ProductObj product = new ProductObj(pid, pname, pdescription, pprice, pfilename);
 			
-			return board;
+			return product;
 			
 		} finally {
 			if(rs != null) rs.close();
@@ -101,4 +103,8 @@ public class BoardDAO {
 		
 		
 	}
+	
+	
+	
+	
 }

@@ -1,4 +1,4 @@
-<%@page import="util.FileUtil"%>
+<%@page import="dao.BoardDAO"%>
 <%@page import="dao.ProductDAO"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.Iterator"%>
@@ -10,8 +10,8 @@
 <%@ page import = "org.apache.commons.fileupload.servlet.*" %>
     
 <%
-	String pid = null, pname = null, pdescription = null, pprice = null, pfname = null;
-	byte[] pfile = null;
+	String btitle = null, bdescription = null, bfname = null;
+	byte[] bfile = null;
 
 	request.setCharacterEncoding("UTF-8");
 
@@ -30,22 +30,17 @@
 		if(item.isFormField()){		// item이 이름 - 값 쌍으로 구성된 필드인지 확인 
 			//파라미터
 			String value = item.getString("utf-8");
-			if(name.equals("id")) pid = value;
-			else if(name.equals("name")) pname = value;
-			else if(name.equals("description")) pdescription = value;
-			else if(name.equals("price")) pprice = value;
+			if(name.equals("id")) btitle = value;
+			else if(name.equals("description")) bdescription = value;
 		} else {
 			//사진 photo는 getName(), get() 사진이름, 사진을 추출
 			if(name.equals("filename")){
-				pfname = item.getName();
-				pfile = item.get();
+				bfname = item.getName();
+				bfile = item.get();
 				
 				//사진을 파일로 특정 위치에 저장
-				//File file = new File("C:/photos/" + pfname);
-				//item.write(file);
-				
-				String root = application.getRealPath(java.io.File.separator);
-				FileUtil.saveImage(root,pfname,pfile);
+				File file = new File("/photos/" + bfname);
+				item.write(file);
 			}
 		}
 	}
@@ -54,12 +49,12 @@
 
 	
 	
-	ProductDAO dao = new ProductDAO();
-	pdescription = pdescription.replace("\r\n", "<br/>");
-	int code = dao.insert(pid, pname, pdescription, pprice, pfname);
+	BoardDAO dao = new BoardDAO();
+	bdescription = bdescription.replace("\r\n", "<br/>");
+	int code = dao.insert(btitle, bdescription, bfname);
 	
 	if(code == 1){
-		response.sendRedirect("/product/products.jsp");
+		response.sendRedirect("listBoard.jsp");
 	} else {
 		response.sendRedirect("main.jsp");
 		

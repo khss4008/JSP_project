@@ -1,3 +1,4 @@
+<%@page import="util.FileUtil"%>
 <%@page import="dao.BoardDAO"%>
 <%@page import="dao.ProductDAO"%>
 <%@page import="java.io.File"%>
@@ -39,8 +40,11 @@
 				bfile = item.get();
 				
 				//사진을 파일로 특정 위치에 저장
-				File file = new File("/photos/" + bfname);
-				item.write(file);
+/* 				File file = new File("/photos/" + bfname);
+				item.write(file); */
+				String root = application.getRealPath(java.io.File.separator);
+				FileUtil.saveImage(root, bfname, bfile);
+				
 			}
 		}
 	}

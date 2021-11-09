@@ -16,7 +16,7 @@
       </div>
    </div>
 <%
-	String a = request.getParameter("id");
+	String a = "1";
 	BoardObj board = (new BoardDAO()).getDetail(a);
 
 
@@ -27,27 +27,24 @@
       <form name="newProduct" class="form-horizontal"  action="addCheck.jsp" method="post" onsubmit="return checkForm()" enctype = "multipart/form-data">
          <div class="form-group  row">
             <label class="col-sm-2 ">글제목</label>
-            <div class="col-sm-4">
-               <input name="title" type="text" class="form-control" value = <%=board.getBtitle() %> >
+            <div class="col-sm-6">
+               <input name="title" type="text" class="form-control" placeholder="title" >
             </div>
          </div>
 
          
           <div class="form-group  row">
             <label class="col-sm-2">글내용</label>
-            <div class="col-sm-4">
-               <textarea name = description rows = "5" cols = "20" class="form-control" ><%=board.getBdescription() %></textarea>
+            <div class="col-sm-6">
+               <textarea name = description rows = "5" cols = "20" class="form-control" placeholder = "content"></textarea>
             </div>
          </div>
-
- 
 
          
           <div class="form-group  row">
             <label class="col-sm-2">사진</label>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
             
-            <img src="/images/<%=board.getBfname()%>" style="width: 100%" />
             
             </div>
          </div>

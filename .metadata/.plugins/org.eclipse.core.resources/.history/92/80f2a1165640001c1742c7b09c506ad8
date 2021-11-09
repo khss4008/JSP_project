@@ -16,7 +16,7 @@
       </div>
    </div>
 <%
-	String a = request.getParameter("id");
+	String a = "1";
 	BoardObj board = (new BoardDAO()).getDetail(a);
 
 
@@ -36,7 +36,7 @@
           <div class="form-group  row">
             <label class="col-sm-2">글내용</label>
             <div class="col-sm-4">
-               <textarea name = description rows = "5" cols = "20" class="form-control" ><%=board.getBdescription() %></textarea>
+               <textarea name = description rows = "5" cols = "20" class="form-control" value = <%=board.getBdescription() %>></textarea>
             </div>
          </div>
 

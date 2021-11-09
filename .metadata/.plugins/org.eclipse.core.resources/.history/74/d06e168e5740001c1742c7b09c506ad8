@@ -69,63 +69,7 @@ public class ProductDAO {
 		}
 	
 	
-	public ProductObj getDetail(String sid) throws NamingException, SQLException {
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		
-		try {
-			String sql = "SELECT * FROM product WHERE pid = ?";
-			conn = ConnectionPool.get();
-			stmt = conn.prepareStatement(sql);
-				stmt.setString(1, sid);
-			rs = stmt.executeQuery();
-			
-			rs.next();
-			
-			String pid = rs.getString(1);
-			String pname = rs.getString(2);
-			String pdescription = rs.getString(3);
-			String pprice = rs.getString(4);
-			String pfilename = rs.getString(5);
-			
-			ProductObj product = new ProductObj(pid, pname, pdescription, pprice, pfilename);
-			
-			return product;
-			
-		} finally {
-			if(rs != null) rs.close();
-			if(stmt != null) stmt.close();
-			if(conn != null) conn.close();
-			
-		}
-		
-		
-		
-	}
 	
-	public int delete(String id) throws NamingException, SQLException{
-			
-			Connection conn = null;
-			PreparedStatement stmt = null;
-			
-			
-			try {
-				String sql = "DELETE FROM product WHERE pid = ?";
-
-				conn = ConnectionPool.get();
-				stmt = conn.prepareStatement(sql);
-				stmt.setString(1, id);
-				
-				int count = stmt.executeUpdate(); //return이 1이면 데이터 나온거 2이면 아무것도 안된거
-				return (count == 1) ? 1 : 2;
-				
-			} finally {
-				if(conn != null) conn.close();
-				if(stmt != null) stmt.close();
-			}
-			
-		}
 	
 	
 	

@@ -1,0 +1,14 @@
+<%@page import="dao.ProductDAO"%>
+<%@page import="dao.ProductObj"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+<%
+
+	String a = request.getParameter("id");
+	
+	ProductObj product = (new ProductDAO()).delete(a);	
+	
+
+%>

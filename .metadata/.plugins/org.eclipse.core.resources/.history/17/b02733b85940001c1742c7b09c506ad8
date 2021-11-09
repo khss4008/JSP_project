@@ -44,7 +44,7 @@
   
     <tr>
       <th scope="row"><%=++i %></th>
-      <td><a href = "detailBoard.jsp?id=<%=board.getBid()%>"><%=board.getBtitle() %></a></td>
+      <td><%=board.getBtitle() %></td>
       <td><%=board.getBdescription() %></td>
       <td><%=board.getBfname() %></td>
       <td><%=board.getBdate() %></td>

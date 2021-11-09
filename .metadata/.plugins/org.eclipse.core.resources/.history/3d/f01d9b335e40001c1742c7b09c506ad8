@@ -15,7 +15,7 @@
 	</div>
 <%
 String a = request.getParameter("id");
-ProductObj product = (new ProductDAO()).getDetail(a);	
+ProductObj product = (new ProductDAO()).getDetail();	
 	
 %>
 	
@@ -30,7 +30,7 @@ ProductObj product = (new ProductDAO()).getDetail(a);
 			<p><%=product.getPdescription() %>
 			<p><b>상품코드 : <%=product.getPid() %>
 			<p><b>상품가격 : <%=product.getPprice() %>
-			<p><form action = "addCart.jsp?id=<%=product.getPid() %>"	method = "post">
+			<p><form action = "addCart.jsp?id=<%product.getPid() %>"	method = "post">
 				<a href = "#" class = "btn btn-info" onclick="addToCart()">상품 주문 &raquo;</a>
 				<a href = "cart.jsp" class="btn btn-warning">장바구니 &raquo;</a>
 				<a href = "products.jsp" class = "btn btn-secondary">상품목록&raquo;</a>
